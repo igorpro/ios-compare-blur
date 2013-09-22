@@ -20,6 +20,7 @@
 		78EAE3F917EF226C00F81DCC /* IPViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78EAE3F717EF226C00F81DCC /* IPViewController_iPhone.xib */; };
 		78EAE3FC17EF226C00F81DCC /* IPViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 78EAE3FA17EF226C00F81DCC /* IPViewController_iPad.xib */; };
 		78EAE40317EF353B00F81DCC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78EAE40217EF353B00F81DCC /* QuartzCore.framework */; };
+		78EAE40617EF6D9400F81DCC /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 78EAE40517EF6D9400F81DCC /* 1.jpg */; };
 		FEA1A1D6D7A44F4386696964 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D194503775E4A45953213EB /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		78EAE3F817EF226C00F81DCC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/IPViewController_iPhone.xib; sourceTree = "<group>"; };
 		78EAE3FB17EF226C00F81DCC /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/IPViewController_iPad.xib; sourceTree = "<group>"; };
 		78EAE40217EF353B00F81DCC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		78EAE40517EF6D9400F81DCC /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		E8F84F75CAA849619EBA4A9F /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -102,6 +104,7 @@
 				78EAE3F717EF226C00F81DCC /* IPViewController_iPhone.xib */,
 				78EAE3FA17EF226C00F81DCC /* IPViewController_iPad.xib */,
 				78EAE3E317EF226C00F81DCC /* Supporting Files */,
+				78EAE40417EF6D9400F81DCC /* Resources */,
 			);
 			path = TestBlur;
 			sourceTree = "<group>";
@@ -119,6 +122,14 @@
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
+		};
+		78EAE40417EF6D9400F81DCC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				78EAE40517EF6D9400F81DCC /* 1.jpg */,
+			);
+			path = Resources;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXGroup section */
 
@@ -180,6 +191,7 @@
 				78EAE3F317EF226C00F81DCC /* Default-568h@2x.png in Resources */,
 				78EAE3F917EF226C00F81DCC /* IPViewController_iPhone.xib in Resources */,
 				78EAE3FC17EF226C00F81DCC /* IPViewController_iPad.xib in Resources */,
+				78EAE40617EF6D9400F81DCC /* 1.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,7 +296,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -309,7 +321,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -326,6 +338,7 @@
 				INFOPLIST_FILE = "TestBlur/TestBlur-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -339,6 +352,7 @@
 				INFOPLIST_FILE = "TestBlur/TestBlur-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

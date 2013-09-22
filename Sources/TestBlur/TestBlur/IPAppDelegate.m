@@ -19,7 +19,7 @@
     if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
         self.viewController = [[IPViewController alloc] initWithNibName:@"IPViewController_iPhone" bundle:nil];
     } else {
-        self.viewController = [[IPViewController alloc] initWithNibName:@"IPViewController_iPad" bundle:nil];
+        self.viewController = [[IPViewController alloc] initWithNibName:@"IPViewController_iPhone" bundle:nil];
     }
     self.window.rootViewController = self.viewController;
     [self.window makeKeyAndVisible];

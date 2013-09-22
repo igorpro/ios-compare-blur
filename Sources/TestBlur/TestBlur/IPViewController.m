@@ -14,6 +14,7 @@
 @interface IPViewController () <UITableViewDataSource, UITableViewDelegate>
 {
     IBOutlet UILabel *_placeholderLabel;
+    IBOutlet UILabel *_fpsLabel;
     IBOutlet UITableView *_tableView;
     UIView *_blurView;
     
@@ -23,6 +24,7 @@
     int _secondTicks;
     CFTimeInterval _totalCount;
     int _totalTicks;
+    UIImage *_thumbImage;
 }
 
 @end
@@ -35,17 +37,53 @@
 
     _placeholderLabel.hidden = YES;
     
+    _thumbImage = [UIImage imageNamed:@"1.jpg"];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
     _link = [CADisplayLink displayLinkWithTarget:self selector:@selector(didTick:)];
-    _lastInterval = CACurrentMediaTime();
+    [_link addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+    _lastInterval = _link.timestamp;
+    
+    _secondTicks = 0;
+    _secondCount = 0;
+    _totalCount = 0;
+    _totalTicks = 0;
     
     [self setupFXBlurView];
 }
 
 - (void)didTick:(id)sender
 {
-    CFTimeInterval delta = _link.timestamp - _lastInterval;
+    CFTimeInterval new = _link.timestamp;
+    CFTimeInterval delta = new - _lastInterval;
+    _lastInterval = new;
     
+    _secondCount += delta;
+    _secondTicks ++;
     
+    _totalCount += delta;
+    _totalTicks ++;
+    
+    if (_secondCount >= 0.25 || _secondTicks >= 15)
+    {
+        CGFloat fps = _secondTicks / _secondCount;
+        
+        _fpsLabel.text = [NSString stringWithFormat:@"FPS: %0.1f", fps];
+        
+        _secondTicks = 0;
+        _secondCount = 0;
+    }
 }
 
 #pragma mark - Blur views
@@ -53,12 +91,19 @@
 - (void)setupFXBlurView
 {
     FXBlurView *blurView = [[FXBlurView alloc] initWithFrame:_placeholderLabel.frame];
+    blurView.autoresizingMask = _placeholderLabel.autoresizingMask;
     _blurView = blurView;
     blurView.blurEnabled = YES;
     blurView.blurRadius = 10;
     blurView.tintColor = [UIColor clearColor];
-    blurView.dynamic = YES;
+    blurView.dynamic = !NO;
     [self.view addSubview:blurView];
+}
+
+- (void)stopBlurView
+{
+    [_blurView removeFromSuperview];
+    _blurView = nil;
 }
 
 #pragma mark - UITableViewDataSource
@@ -81,6 +126,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     }
     
+    cell.imageView.image = _thumbImage;
     cell.textLabel.text = @"Some long text string bla-bla-bla one two three";
     
     return cell;
